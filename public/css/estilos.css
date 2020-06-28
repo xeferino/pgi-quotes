@@ -1,0 +1,217 @@
+/*Bootstrap Customize*/
+.navbar-default {
+    background-color: #f1c40f;
+    border-color: #f39c12;
+    border-bottom: 3px solid #f39c12;
+    box-shadow: 0px 0px 19px 8px #ddd;
+}
+
+
+.navbar-default .navbar-brand {
+    color: #090909;
+}
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
+    color: #090909;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background-color: #f39c12;
+    color: #fcf8e3;
+    font-weight: bold;
+}
+.form-control{
+	border-radius: 2px;
+}
+.panel-heading{
+	border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+}
+.panel{
+	border-radius: 2px;
+}
+.btn{
+	border-radius: 2px;
+}
+.panel-default>.panel-heading {
+    color: #000;
+    background-color: #f1c40f;
+    border-color: #f39c12;
+    border-bottom: 3px solid #f39c12;
+    font-weight: bold;
+}
+
+.panel-default>.panel-heading2 {
+    color: #000;
+    background-color: #f39c124f;
+    border-color: #f39c12;
+    
+    font-weight: bold;
+}
+.panel-heading2{
+    padding: 10px 15px;
+}
+
+.panel {
+    margin-bottom: 22px;
+    background-color: #fff;
+    border: 0px solid transparent;
+    box-shadow: 0 1px 9px 4px rgba(0,0,0,.05);
+}
+.panel-default {
+    border-color: #f39c12;
+}
+
+.btn-default {
+    color: black;
+    background-color: #ccc;
+    border-color: #ccc;
+}
+.btn-tema{
+    color: black;
+    background-color: #f1c40f;
+    border-color: #f1c40f;
+}
+
+.list-group-item:first-child {
+    border-top-right-radius: 2px; 
+    border-top-left-radius: 2px;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.nav-tabs {
+    background: #e6e5e5;
+}
+
+.nav-tabs>li>a {
+    color: black;
+    border-radius: 0 !important;
+}
+
+.modal-header {
+    padding: 15px;
+    /* border-bottom: 1px solid #e5e5e5; */
+    /* background: #f1c40f; */
+    background-color: #f1c40f;
+    border-color: #f39c12;
+    border-bottom: 3px solid #f39c12;
+}
+
+.modal-header2 {
+    padding: 15px;
+    /* border-bottom: 1px solid #e5e5e5; */
+    /* background: #f1c40f; */
+    background-color: #f39c124f;
+    border-color: #f39c12;
+    
+}
+
+.modal-content {
+    border-radius: 2px;
+}
+.tb>thead>tr>th,
+.tb>tbody>tr>td{
+    vertical-align: middle;
+}
+.fc{
+    margin-bottom: 0 !important;
+}
+.alert-success {
+    background-color: #f1c40f73;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
+.alert {
+    padding: 15px;
+    border: 0px solid transparent;
+    border-radius: 2px;
+}
+.hover-a{
+    border-bottom: 1px solid #f39c12;
+    padding: 1px 7px;
+}
+.hover-a:hover{
+    cursor: pointer;
+}
+.pagination > li > a, .pagination > li > span {
+ 
+    color: black;
+    
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    z-index: 3;
+    color: black;
+    cursor: default;
+    background-color: #f1c40f;
+    border-color: #f39c12;
+}
+
+.input-group-addon {
+
+    border-radius: 2px;
+}
+
+.item-doc{
+    border: 1px solid #d0d0d0;
+    height: 210px;
+    padding: 15px;
+    
+}
+a>.item-doc{
+    color: black;
+
+}
+a{
+    text-decoration: none !important;
+}
+
+.item-doc:hover{
+    border: 1px solid #bbb;
+    background: #bbbbbb0f;
+    cursor: pointer;
+    box-shadow: 0px 0px 6px #0000002e;
+}
+
+.labell{
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    background: #d0d0d0;
+    width: 120px;
+    padding: 5px 10px;
+}
+
+.preview-doc{
+    padding-top: .3em;
+    color: #888;
+}
+.preview-doc:hover{
+    color: #464646;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.sup-content-steps{
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1em;
+}
+.content-steps{
+    padding-top: 1em;
+    padding-bottom: 2em;
+    
+}
+.steps{
+    background-color: #f1f1f1;
+    padding: 10px 14px;
+    border-radius: 50%;
+    margin: 5px;
+    color: #bbb;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.step-activate{
+    background-color: #fbe0b6;
+    color: black;
+}
