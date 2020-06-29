@@ -74,6 +74,32 @@
     
         
     <script>
+
+    $(document).ready(function () {
+        var day_quote = '<?php echo e(date('Y-m-d')); ?>';
+        $.ajax({
+            url: '<?php echo e(url('ajax/quotes')); ?>/'+day_quote,
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+                if(data!=0){
+                    $("#count-quote").text(data.quotes.length);
+                    $("#count-list-quotes").html(function(){
+                        var html ='';
+                        $.each(data.quotes, function(i,item){
+                            html +='<li class="dropdown-header" role="menu"><a href="#"><i class="fa fa-minus"></i> '+item.title+'</a></li>';
+                            html +='<li role="separator" class="divider"></li>';
+                        });
+                            html +='<li class="dropdown-header" role="menu"><a href="<?php echo e(url('/dash/quote/list')); ?>" class="btn btn-warning btn-large btn-block">Lista de citas <i class="fa fa-eye "></i></a></li>';
+
+                        return html;
+                    });
+                }else{
+                    console.log('Servidor no Responde');
+                }
+            }
+        }); 
+    });
         $.ajaxSetup({
                headers: {
                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

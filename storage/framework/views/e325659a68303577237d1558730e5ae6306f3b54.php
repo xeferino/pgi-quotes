@@ -12,7 +12,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                        Sistema CONSULTORIO VIRTUAL
+                        SISTEMA CV
                     </a>
                 </div>
 
