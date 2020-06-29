@@ -12,7 +12,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                        Sistema CONSULTORIO VIRTUAL
+                        CONSULTORIO VIRTUAL
                     </a>
                 </div>
 
@@ -52,14 +52,18 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                             <li class="dropdown" >
+                                <span 
+                                    class="badge badge-pill"
+                                    style="float:right;margin-bottom:-10px; 
+                                            margin-top:10px; background-color: #f39c12;
+                                            color:#fff;"
+                                     id="count-quote">
+                                     0
+                                </span> <!-- your badge -->
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <span class="icon-bell2"></span>
+                                    <span><i class="fa fa-bell"></i></span>
                                 </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href=""></a>
-                                    </li>
+                                <ul class="dropdown-menu" role="menu" id="count-list-quotes">
                                 </ul>
                             </li>
                             <li class="dropdown">

@@ -345,6 +345,7 @@
                 if(data!=0){
                     $('.loading_calendar').hide();
                     $('#content-calendar').show();
+                    $("#count-quote").text(data.quotes.length);
                     $("#list").html(function(){
                         var html ='';
                         $.each(data.quotes, function(i,item){
@@ -358,6 +359,17 @@
                                 html +='</div>'; 
                             html +='</div>';
                         });
+                        return html;
+                    });
+
+                    $("#count-list-quotes").html(function(){
+                        var html ='';
+                        $.each(data.quotes, function(i,item){
+                            html +='<li class="dropdown-header" role="menu"><a href="#"><i class="fa fa-minus"></i> '+item.title+'</a></li>';
+                            html +='<li role="separator" class="divider"></li>';
+                        });
+                            html +='<li class="dropdown-header" role="menu"><a href="{{ url('/dash/quote/list') }}" class="btn btn-warning btn-large btn-block">Lista de citas <i class="fa fa-eye "></i></a></li>';
+
                         return html;
                     });
                     

@@ -12,7 +12,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Sistema CONSULTORIO VIRTUAL
+                        CONSULTORIO VIRTUAL
                     </a>
                 </div>
 
@@ -25,7 +25,20 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        
+                            <li class="dropdown" >
+                                <span 
+                                    class="badge badge-pill"
+                                    style="float:right;margin-bottom:-10px; 
+                                            margin-top:10px; background-color: #f39c12;
+                                            color:#fff;"
+                                    id="count-quote">
+                                    0
+                                </span> <!-- your badge -->
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <span><i class="fa fa-bell"></i></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" id="count-list-quotes"></ul>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <img src="{{ asset('img/icon-user.png') }}" alt="" style="width:20px; margin-right: 5px">
