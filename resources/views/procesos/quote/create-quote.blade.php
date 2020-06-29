@@ -42,7 +42,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="date">Fecha</label>
-                            <input type="datetime-local" class="form-control check-key" name="date" value="{{ date('Y-m-d').'T'.date('H:m') }}" min="{{ date('Y-m-d').'T'.date('H:m') }}" required autofocus>
+                            <input type="datetime-local" class="form-control check-key" name="date" value="{{ date('Y-m-d').'T'.date('H:m') }}" min="{{ date('Y-m-d').'T00:00'}}" required autofocus>
                         </div>
                     </div>
 
