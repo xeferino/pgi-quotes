@@ -16,49 +16,55 @@
         <div class="panel-body">
 			@if(count($quotes)>0)
 				<div id="content-citas" style="display: none">
-					<table class="table table-hover" id="lista-citas">
-						<thead>
-							<tr>
-								<th>N°</th>
-								<th>Título</th>
-								<th>Descripción</th>
-								<th>Fecha</th>
-								{{--  <th>Persona</th>
-								<th>Observación</th>  --}}
-								<th>Estatus</th>
-								<th>Opciones</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php $i=0; ?>
-							@foreach($quotes as $quote)
-								<tr id="user_{{ $i=$i+1 }}">
-									<td>{{ $i }}</td>
-									<td>{{ $quote->title }}</td>
-									<td>{{ $quote->description }}</td>
-									<td>{{ $quote->date }}</td>
-									{{--  <td>
-										{{ $quote->fullnames }}<br>
-										{{ "Correo: ".$quote->email }}<br>
-										{{ "Telefono: ".$quote->phone }}
-									</td>  --}}
-									{{--  <td>{{ $quote->observation }}</td>  --}}
-									<td>
-										@if ($quote->status==1)
-											<button class="btn btn-danger btn-xs">Cerrada</button>
-										@else
-											<button class="btn btn-success btn-xs">Asignada</button>
-										@endif
-									</td>
-									<td>
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalDetallesQuote" onclick="clickVerDetallesQuote({{ $quote->id }})">Detalles</button>
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEditarQuote" onclick="clickEditarQuote({{ $quote->id }})">Editar</button>
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEliminarQuote" onclick="clickEliminarQuote({{ $quote->id }})">Eliminar</button>
-									</td>
-								</tr>			
-							@endforeach
-						</tbody>
-					</table>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-hover" id="lista-citas">
+									<thead>
+										<tr>
+											<th>N°</th>
+											<th>Título</th>
+											<th>Descripción</th>
+											<th>Fecha</th>
+											{{--  <th>Persona</th>
+											<th>Observación</th>  --}}
+											<th>Estatus</th>
+											<th>Opciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php $i=0; ?>
+										@foreach($quotes as $quote)
+											<tr id="user_{{ $i=$i+1 }}">
+												<td>{{ $i }}</td>
+												<td>{{ $quote->title }}</td>
+												<td>{{ $quote->description }}</td>
+												<td>{{ $quote->date }}</td>
+												{{--  <td>
+													{{ $quote->fullnames }}<br>
+													{{ "Correo: ".$quote->email }}<br>
+													{{ "Telefono: ".$quote->phone }}
+												</td>  --}}
+												{{--  <td>{{ $quote->observation }}</td>  --}}
+												<td>
+													@if ($quote->status==1)
+														<button class="btn btn-danger btn-xs">Cerrada</button>
+													@else
+														<button class="btn btn-success btn-xs">Asignada</button>
+													@endif
+												</td>
+												<td>
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalDetallesQuote" onclick="clickVerDetallesQuote({{ $quote->id }})">Detalles</button>
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEditarQuote" onclick="clickEditarQuote({{ $quote->id }})">Editar</button>
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEliminarQuote" onclick="clickEliminarQuote({{ $quote->id }})">Eliminar</button>
+												</td>
+											</tr>			
+										@endforeach
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="text-center loading">
 					Cargando...

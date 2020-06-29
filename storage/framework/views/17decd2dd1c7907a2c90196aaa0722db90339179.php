@@ -14,44 +14,50 @@
         <div class="panel-body">
 			<?php if(count($quotes)>0): ?>
 				<div id="content-citas" style="display: none">
-					<table class="table table-hover" id="lista-citas">
-						<thead>
-							<tr>
-								<th>N°</th>
-								<th>Título</th>
-								<th>Descripción</th>
-								<th>Fecha</th>
-								
-								<th>Estatus</th>
-								<th>Opciones</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php $i=0; ?>
-							<?php $__currentLoopData = $quotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $quote): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<tr id="user_<?php echo e($i=$i+1); ?>">
-									<td><?php echo e($i); ?></td>
-									<td><?php echo e($quote->title); ?></td>
-									<td><?php echo e($quote->description); ?></td>
-									<td><?php echo e($quote->date); ?></td>
-									
-									
-									<td>
-										<?php if($quote->status==1): ?>
-											<button class="btn btn-danger btn-xs">Cerrada</button>
-										<?php else: ?>
-											<button class="btn btn-success btn-xs">Asignada</button>
-										<?php endif; ?>
-									</td>
-									<td>
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalDetallesQuote" onclick="clickVerDetallesQuote(<?php echo e($quote->id); ?>)">Detalles</button>
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEditarQuote" onclick="clickEditarQuote(<?php echo e($quote->id); ?>)">Editar</button>
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEliminarQuote" onclick="clickEliminarQuote(<?php echo e($quote->id); ?>)">Eliminar</button>
-									</td>
-								</tr>			
-							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-						</tbody>
-					</table>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-hover" id="lista-citas">
+									<thead>
+										<tr>
+											<th>N°</th>
+											<th>Título</th>
+											<th>Descripción</th>
+											<th>Fecha</th>
+											
+											<th>Estatus</th>
+											<th>Opciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php $i=0; ?>
+										<?php $__currentLoopData = $quotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $quote): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+											<tr id="user_<?php echo e($i=$i+1); ?>">
+												<td><?php echo e($i); ?></td>
+												<td><?php echo e($quote->title); ?></td>
+												<td><?php echo e($quote->description); ?></td>
+												<td><?php echo e($quote->date); ?></td>
+												
+												
+												<td>
+													<?php if($quote->status==1): ?>
+														<button class="btn btn-danger btn-xs">Cerrada</button>
+													<?php else: ?>
+														<button class="btn btn-success btn-xs">Asignada</button>
+													<?php endif; ?>
+												</td>
+												<td>
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalDetallesQuote" onclick="clickVerDetallesQuote(<?php echo e($quote->id); ?>)">Detalles</button>
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEditarQuote" onclick="clickEditarQuote(<?php echo e($quote->id); ?>)">Editar</button>
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEliminarQuote" onclick="clickEliminarQuote(<?php echo e($quote->id); ?>)">Eliminar</button>
+												</td>
+											</tr>			
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="text-center loading">
 					Cargando...

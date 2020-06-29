@@ -16,33 +16,39 @@
         <div class="panel-body">
 			@if(count($persons)>0)
 				<div id="content-personas" style="display: none">
-					<table class="table table-hover" id="lista-personas">
-						<thead>
-							<tr>
-								<th>N°</th>
-								<th>Nombres y Apellidos</th>
-								<th>Correo Electrónico</th>
-								<th>Telefono</th>
-								<th>Opciones</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php $i=0; ?>
-							@foreach($persons as $person)
-								<tr id="user_{{ $i=$i+1 }}">
-									<td>{{ $i }}</td>
-									<td>{{ $person->fullnames }}</td>
-									<td>{{ $person->email }}</td>
-									<td>{{ $person->phone }}</td>
-									<td >
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalDetallesPersona" onclick="clickVerDetallesPersona({{ $person->id }})">Detalles</button>
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEditarPersona" onclick="clickEditarPersona({{ $person->id }})">Editar</button>
-										<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEliminarPersona" onclick="clickEliminarPersona({{ $person->id }})">Eliminar</button>
-									</td>
-								</tr>			
-							@endforeach
-						</tbody>
-					</table>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-hover" id="lista-personas">
+									<thead>
+										<tr>
+											<th>N°</th>
+											<th>Nombres y Apellidos</th>
+											<th>Correo Electrónico</th>
+											<th>Telefono</th>
+											<th>Opciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php $i=0; ?>
+										@foreach($persons as $person)
+											<tr id="user_{{ $i=$i+1 }}">
+												<td>{{ $i }}</td>
+												<td>{{ $person->fullnames }}</td>
+												<td>{{ $person->email }}</td>
+												<td>{{ $person->phone }}</td>
+												<td >
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalDetallesPersona" onclick="clickVerDetallesPersona({{ $person->id }})">Detalles</button>
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEditarPersona" onclick="clickEditarPersona({{ $person->id }})">Editar</button>
+													<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalEliminarPersona" onclick="clickEliminarPersona({{ $person->id }})">Eliminar</button>
+												</td>
+											</tr>			
+										@endforeach
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="text-center loading">
 					Cargando...
