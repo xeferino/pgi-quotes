@@ -81,10 +81,21 @@
                         <div id="quote-content" style="display: none">
                             <form  method="POST" name="save-quote" id="save-quote" onsubmit="document.getElementById('cre').disabled = true">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="title">Título</label>
                                             <input type="text" class="form-control check-key"  placeholder="Ingrese el titulo de la cita" name="title" id="title" required autofocus>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="type">Tipo</label>
+                                            <select name="type" id="tyoe" class="form-control check-key" required autofocus>
+                                                <option value="">.::Seleccione::.</option>
+                                                <option value="Matrimonio">Matrimonio</option>
+                                                <option value="Familiar">Familiar</option>
+                                            </select>
                                         </div>
                                     </div>
                 
@@ -280,10 +291,10 @@
         var day     = $('#day').val();
         var f1      = new Date(date);
         var f2      = new Date(day);
-        var h       = '<?php echo e(date('H:m')); ?>';
+        var h       = '<?php echo e(date('H')); ?>';
         $('#quotes_day').hide();
         var dateControl = document.querySelector('input[type="datetime-local"]');
-            dateControl.value = date+'T'+h;
+            dateControl.value = date+'T'+h+':00';
 
         if(hasEvent==true){
             $.ajax({
@@ -343,7 +354,6 @@
                 if(data!=0){
                     $('.loading_calendar').hide();
                     $('#content-calendar').show();
-                    $("#count-quote").text(data.quotes.length);
                     $("#list").html(function(){
                         var html ='';
                         $.each(data.quotes, function(i,item){
@@ -359,18 +369,6 @@
                         });
                         return html;
                     });
-
-                    $("#count-list-quotes").html(function(){
-                        var html ='';
-                        $.each(data.quotes, function(i,item){
-                            html +='<li class="dropdown-header" role="menu"><a href="#"><i class="fa fa-minus"></i> '+item.title+'</a></li>';
-                            html +='<li role="separator" class="divider"></li>';
-                        });
-                            html +='<li class="dropdown-header" role="menu"><a href="<?php echo e(url('/dash/quote/list')); ?>" class="btn btn-warning btn-large btn-block">Lista de citas <i class="fa fa-eye "></i></a></li>';
-
-                        return html;
-                    });
-                    
                 }else if (data==0){
                     $('#content-calendar').show();
                     $('.loading_calendar').hide();

@@ -31,6 +31,10 @@
                     <td>{{ dataShowModalDataQuote.description }}</td>
                   </tr>
                   <tr>
+                    <td><b>Tipo</b></td>
+                    <td>{{ dataShowModalDataQuote.type }}</td>
+                  </tr>
+                  <tr>
                     <td><b>Fecha de Cita</b></td>
                     <td>{{ dataShowModalDataQuote.date }}</td>
                   </tr>

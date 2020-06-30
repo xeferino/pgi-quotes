@@ -18,6 +18,7 @@ class CreateModelQuotesTable extends Migration
             $table->unsignedBigInteger('persons_id')->unsigned()->index();
             $table->string('title');
             $table->text('description');
+            $table->string('type');
             $table->datetime('date');
             $table->text('observation')->default(NULL)->nullable($value=true);
             $table->integer('status');

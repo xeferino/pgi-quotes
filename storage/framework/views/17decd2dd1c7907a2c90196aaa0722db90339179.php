@@ -23,26 +23,29 @@
 											<th>N°</th>
 											<th>Título</th>
 											<th>Descripción</th>
+											<th>Tipo</th>
 											<th>Fecha</th>
-											
 											<th>Estatus</th>
 											<th>Opciones</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php $i=0; ?>
+										<?php $cerrada=0; ?>
+										<?php $asigada=0; ?>
 										<?php $__currentLoopData = $quotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $quote): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 											<tr id="user_<?php echo e($i=$i+1); ?>">
 												<td><?php echo e($i); ?></td>
 												<td><?php echo e($quote->title); ?></td>
 												<td><?php echo e($quote->description); ?></td>
+												<td><?php echo e($quote->type); ?></td>
 												<td><?php echo e($quote->date); ?></td>
-												
-												
 												<td>
 													<?php if($quote->status==1): ?>
+														<?php $cerrada++; ?>
 														<button class="btn btn-danger btn-xs">Cerrada</button>
 													<?php else: ?>
+														<?php $asigada++; ?>
 														<button class="btn btn-success btn-xs">Asignada</button>
 													<?php endif; ?>
 												</td>
@@ -54,6 +57,11 @@
 											</tr>			
 										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									</tbody>
+										<tr class="tfoo" style="color: #000; background-color: #f1c40f;	border-color: #f39c12; font-weight: bold;">
+											<td colspan="3">Leyenda: </td>
+											<td colspan="2">Asignadas <button class="btn btn-success btn-xs">(<?php echo e($asigada); ?>)</button> </td>
+											<td colspan="2">Cerradas <button class="btn btn-danger btn-xs">(<?php echo e($cerrada); ?>)</button> </td>
+										</tr>
 								</table>
 							</div>
 						</div>
@@ -143,6 +151,7 @@
 				persons_id:"",
 				title:"",
 				description:"",
+				type:"",
 				date:"",
 				observation:"",
 				status:"",
@@ -167,11 +176,12 @@
 				var mytext = $("#pers option:selected").text();
 				appQuoteList.dataShowModalDataQuote.fullnames = mytext;
 			},
-			changeValuesOfPropDataQuote: function(on, persons_id, title, description, date, observation, status, fullnames, email, phone, created, updated){
+			changeValuesOfPropDataQuote: function(on, persons_id, title, description, type, date, observation, status, fullnames, email, phone, created, updated){
 				appQuoteList.dataShowModalDataQuote.on = on;
 				appQuoteList.dataShowModalDataQuote.persons_id = persons_id;
 				appQuoteList.dataShowModalDataQuote.title = title;
 				appQuoteList.dataShowModalDataQuote.description = description;
+				appQuoteList.dataShowModalDataQuote.type = type;
 				appQuoteList.dataShowModalDataQuote.date = date;
 				appQuoteList.dataShowModalDataQuote.observation = observation;
 				appQuoteList.dataShowModalDataQuote.status = status;
@@ -193,13 +203,8 @@
 					success: function(data){
 						btnElement.hide();
 						if(data!=0){
-							/* if(data.quote[0].status==0){
-								data.quote[0].status = "Asignada";
-							}else{
-								data.quote[0].status = "Cerrada";
-							} */
 							$("#pers").val(data.quote[0].persons_id);
-							appQuoteList.changeValuesOfPropDataQuote(true, data.quote[0].persons_id, data.quote[0].title, data.quote[0].description, data.quote[0].date, data.quote[0].observation, data.quote[0].status, data.quote[0].fullnames, data.quote[0].email, data.quote[0].phone, data.quote[0].created_at, data.quote[0].updated_at);
+							appQuoteList.changeValuesOfPropDataQuote(true, data.quote[0].persons_id, data.quote[0].title, data.quote[0].description,  data.quote[0].type, data.quote[0].date, data.quote[0].observation, data.quote[0].status, data.quote[0].fullnames, data.quote[0].email, data.quote[0].phone, data.quote[0].created_at, data.quote[0].updated_at);
 						}else{
 							console.log('Servidor no Responde');
 						}
@@ -209,12 +214,12 @@
 
 			clickVerDetallesQuote: function(id){
 				this.putidQuote(id);
-				this.changeValuesOfPropDataQuote("","","","","","","","","","","","");
+				this.changeValuesOfPropDataQuote("","","","","","","","","","","","","");
 				this.ajaxGetQuotes($('#load_cargar_data_detalles'));
 			},
 			clickEditarQuote: function(id){
 				this.putidQuote(id);
-				this.changeValuesOfPropDataQuote("","","","","","","","","","","","");
+				this.changeValuesOfPropDataQuote("","","","","","","","","","","","","");
 				this.ajaxGetQuotes($('#load_cargar_data_editar'));
 			},
 
@@ -227,6 +232,7 @@
 					data: {
 						title:this.dataShowModalDataQuote.title,
 						description: this.dataShowModalDataQuote.description,
+						type: this.dataShowModalDataQuote.type,
 						date: this.dataShowModalDataQuote.date,
 						observation: this.dataShowModalDataQuote.observation,
 						status: this.dataShowModalDataQuote.status,
@@ -250,7 +256,7 @@
 			},
 			clickEliminarQuote: function(id){
 				this.putidQuote(id);
-				this.changeValuesOfPropDataQuote("","","","","","","","","","","","");
+				this.changeValuesOfPropDataQuote("","","","","","","","","","","","","");
 				this.ajaxGetQuotes($('#load_cargar_data_eliminar'));
 			},
 			clickGuardarEliminarQuote: function(){

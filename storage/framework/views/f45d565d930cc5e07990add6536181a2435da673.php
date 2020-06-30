@@ -30,14 +30,14 @@
                             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Personas</a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<?php echo e(url('dash/people/new')); ?>">Crear Nueva Persona</a></li>
-                                <li><a href="<?php echo e(url('dash/people/list')); ?>">Litado de Personas</a></li>
+                                <li><a href="<?php echo e(url('dash/people/list')); ?>">Listado de Personas</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Citas</a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<?php echo e(url('dash/quote/new')); ?>">Crear Nueva Cita</a></li>
-                                <li><a href="<?php echo e(url('dash/quote/list')); ?>">Listdo de Citas</a></li>
+                                <li><a href="<?php echo e(url('dash/quote/list')); ?>">Listado de Citas</a></li>
                             </ul>
                         </li>
                         <li>

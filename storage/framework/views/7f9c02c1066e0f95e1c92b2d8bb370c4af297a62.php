@@ -18,10 +18,21 @@
                 <?php echo e(csrf_field()); ?>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="title">Título</label>
                             <input type="text" class="form-control check-key"  placeholder="Ingrese el titulo de la cita" name="title" value="<?php echo e(old('title')); ?>" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="type">Tipo</label>
+                            <select name="type" id="type" class="form-control check-key" required autofocus>
+                                <option value="">.::Seleccione::.</option>
+                                <option value="Matrimonio">Matrimonio</option>
+                                <option value="Familiar">Familiar</option>
+                            </select>
                         </div>
                     </div>
 
@@ -40,7 +51,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="date">Fecha</label>
-                            <input type="datetime-local" class="form-control check-key" name="date" value="<?php echo e(date('Y-m-d').'T'.date('H:m')); ?>" min="<?php echo e(date('Y-m-d').'T00:00'); ?>" required autofocus>
+                            <input type="datetime-local" class="form-control check-key" name="date" value="<?php echo e(date('Y-m-d').'T'.date('H').':00'); ?>" min="<?php echo e(date('Y-m-d').'T00:00'); ?>" required autofocus>
                         </div>
                     </div>
 

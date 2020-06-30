@@ -42,7 +42,7 @@
                                 
                 <li ><a href="{{ url('dash/') }}"><span class="glyphicon glyphicon-arrow-left"></span></a></li>
                 <li role="presentation" class="people-new"><a id="h" href="{{ url('dash/people/new') }}">Crear Nueva Persona</a></li>
-                <li role="presentation" class="people-list"><a href="{{ url('dash/people/list') }}">Lista de Persosnas</a></li>
+                <li role="presentation" class="people-list"><a href="{{ url('dash/people/list') }}">Lista de Personas</a></li>
                 
 
               @endif

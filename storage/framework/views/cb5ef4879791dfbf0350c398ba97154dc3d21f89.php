@@ -39,6 +39,28 @@
                        <h4  style="margin: 0px">{{ dataShowModalDataQuote.fullnames }}</h4>
                     </th>
                   </tr>
+
+                  <tr>
+                    <th>
+                      <div class="form-group fc">
+                        <select name="type" class="form-control check-key" v-model="dataShowModalDataQuote.type" required autofocus>
+                          <option value="Matrimonio">Matrimonio</option>
+                          <option value="Familiar">Familiar</option>
+                        </select>
+                      </div>
+                    </th>
+                    <th>
+                       <h4 style="margin: 0px">
+                          <button class="btn btn-success btn-xs" v-if="dataShowModalDataQuote.type!='Matrimonio'">
+                            Familiar
+                          </button>
+                          <button v-else class="btn btn-success btn-xs">
+                            Matrimonio
+                          </button>
+                      </h4>
+                    </th>
+                  </tr>
+
                   <tr>
                     <th>
                       <div class="form-group fc">

@@ -20,10 +20,21 @@
 		<form  method="POST" action="{{ route('save-quote') }}" onsubmit="document.getElementById('cre').disabled = true">
                 {{ csrf_field() }}
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="title">Título</label>
                             <input type="text" class="form-control check-key"  placeholder="Ingrese el titulo de la cita" name="title" value="{{ old('title') }}" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="type">Tipo</label>
+                            <select name="type" id="type" class="form-control check-key" required autofocus>
+                                <option value="">.::Seleccione::.</option>
+                                <option value="Matrimonio">Matrimonio</option>
+                                <option value="Familiar">Familiar</option>
+                            </select>
                         </div>
                     </div>
 
@@ -42,7 +53,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="date">Fecha</label>
-                            <input type="datetime-local" class="form-control check-key" name="date" value="{{ date('Y-m-d').'T'.date('H:m') }}" min="{{ date('Y-m-d').'T00:00'}}" required autofocus>
+                            <input type="datetime-local" class="form-control check-key" name="date" value="{{ date('Y-m-d').'T'.date('H').':00' }}" min="{{ date('Y-m-d').'T00:00'}}" required autofocus>
                         </div>
                     </div>
 

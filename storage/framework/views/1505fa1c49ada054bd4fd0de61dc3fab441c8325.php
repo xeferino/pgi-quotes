@@ -51,7 +51,9 @@
 
 
         <?php echo $__env->yieldContent('content'); ?>
-
+        <div id="notification-quote-details">
+			<?php echo $__env->make('procesos.quote.modal.modal-details-quote-notifications', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
         <footer>
             <p class="text-center" style="color:#bbb">Sistema CONSULTORIO VIRTUAL - 2020</p>
 			<p class="text-center" style="color:#bbb">Pst. Rocendo Romero</p>
@@ -87,11 +89,10 @@
                     $("#count-list-quotes").html(function(){
                         var html ='';
                         $.each(data.quotes, function(i,item){
-                            html +='<li class="dropdown-header" role="menu"><a href="#"><i class="fa fa-minus"></i> '+item.title+'</a></li>';
+                            html +='<li class="dropdown-header" role="menu"><a href="#" data-toggle="modal" data-target="#myModalDetailsQuote" onclick="clickViewDetailsQuote('+item.id+')"><i class="fa fa-minus"></i> '+item.title+'</a></li>';
                             html +='<li role="separator" class="divider"></li>';
                         });
                             html +='<li class="dropdown-header" role="menu"><a href="<?php echo e(url('/dash/quote/list')); ?>" class="btn btn-warning btn-large btn-block">Lista de citas <i class="fa fa-eye "></i></a></li>';
-
                         return html;
                     });
                 }else{
@@ -105,6 +106,78 @@
                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                }
             });
+    function clickViewDetailsQuote(id){
+		detailsQuote.clickViewDetailsQuote(id);
+	}
+    var detailsQuote = new Vue({
+		el: '#notification-quote-details',
+		data: {
+			idQuote:'',
+			dataShowModalDetailsQuote:{
+				on_quote: "",
+				title_quote:"",
+				description_quote:"",
+				type_quote:"",
+				date_quote:"",
+				observation_quote:"",
+				status_quote:"",
+				fullnames_quote:"",
+				email_quote:"",
+				phone_quote:"",
+				created_quote:"",
+				updated_quote:""
+			}
+		},
+		created: function(){
+			
+		},
+		methods:{
+
+			//methods reutilizables
+			putidQuote: function(id){
+				this.idQuote = id;
+			},
+
+			changeValuesOfPropDataQuoteDetalis: function(on_quote, title_quote, description_quote, type_quote, date_quote, observation_quote, status_quote, fullnames_quote, email_quote, phone_quote, created_quote, updated_quote){
+				detailsQuote.dataShowModalDetailsQuote.on_quote = on_quote;
+				detailsQuote.dataShowModalDetailsQuote.title_quote = title_quote;
+				detailsQuote.dataShowModalDetailsQuote.description_quote = description_quote;
+				detailsQuote.dataShowModalDetailsQuote.type_quote = type_quote;
+				detailsQuote.dataShowModalDetailsQuote.date_quote = date_quote;
+				detailsQuote.dataShowModalDetailsQuote.observation_quote= observation_quote;
+				detailsQuote.dataShowModalDetailsQuote.status_quote = status_quote;
+				detailsQuote.dataShowModalDetailsQuote.fullnames_quote = fullnames_quote;
+				detailsQuote.dataShowModalDetailsQuote.email_quote = email_quote;
+				detailsQuote.dataShowModalDetailsQuote.phone_quote = phone_quote;
+				detailsQuote.dataShowModalDetailsQuote.created_quote = created_quote;
+				detailsQuote.dataShowModalDetailsQuote.updated_quote = updated_quote;
+			},
+			ajaxGetQuotesDetalis: function(btnElement){
+				$.ajax({
+					url: '<?php echo e(url('ajax/quote/get')); ?>/'+this.idQuote,
+					type: 'get',
+					dataType: 'json',
+					beforeSend: function(){
+						btnElement.show();
+					},
+					success: function(data){
+						btnElement.hide();
+						if(data!=0){
+							detailsQuote.changeValuesOfPropDataQuoteDetalis(true, data.quote[0].title, data.quote[0].description, data.quote[0].type, data.quote[0].date, data.quote[0].observation, data.quote[0].status, data.quote[0].fullnames, data.quote[0].email, data.quote[0].phone, data.quote[0].created_at, data.quote[0].updated_at);
+						}else{
+							console.log('Servidor no Responde');
+						}
+					}
+				});
+			},
+
+			clickViewDetailsQuote: function(id){
+				this.putidQuote(id);
+				this.changeValuesOfPropDataQuoteDetalis("","","","","","","","","","","","","");
+				this.ajaxGetQuotesDetalis($('#load_data_details_quote'));
+			}
+		}
+	});
     </script>
 
 

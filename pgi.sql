@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50724
 File Encoding         : 65001
 
-Date: 2020-06-28 17:54:00
+Date: 2020-06-30 14:53:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -82,6 +82,7 @@ CREATE TABLE `password_resets` (
 -- ----------------------------
 -- Records of password_resets
 -- ----------------------------
+INSERT INTO `password_resets` VALUES ('edi.villamar@gmail.com', '$2y$10$O1gMewEpOpcovwxTiOppl.4QgqCczBuyDkKo5ibl6Kik/a6CCAG42', '2020-06-29 16:29:30');
 
 -- ----------------------------
 -- Table structure for persons
@@ -95,15 +96,13 @@ CREATE TABLE `persons` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of persons
 -- ----------------------------
-INSERT INTO `persons` VALUES ('3', 'Yugdelis Garate', 'yugdelis@gmail.com', '04149585692', '2020-06-26 13:21:35', '2020-06-26 13:21:35');
-INSERT INTO `persons` VALUES ('4', 'Jose Gregorio', 'contacto@cascaradigital.com', '04149585692', '2020-06-26 15:32:20', '2020-06-26 15:32:20');
-INSERT INTO `persons` VALUES ('5', 'Ruth Guatumillo', 'RuthGuatumillo@gmail.com', '04149585692', '2020-06-26 16:59:08', '2020-06-26 16:59:08');
-INSERT INTO `persons` VALUES ('6', 'kelvin', 'kelvin@gmail.com', '04247896543', '2020-06-27 14:54:21', '2020-06-27 14:54:21');
+INSERT INTO `persons` VALUES ('5', 'Ruth Guatumillo', 'ruthguatumillo@pgi.com', '+5930987654', '2020-06-26 16:59:08', '2020-06-26 16:59:08');
+INSERT INTO `persons` VALUES ('7', 'Edison Villamar Segura', 'edi.villamar@gmail.com', '0967520836', '2020-06-29 15:25:19', '2020-06-29 15:25:19');
 
 -- ----------------------------
 -- Table structure for quotes
@@ -114,6 +113,7 @@ CREATE TABLE `quotes` (
   `persons_id` bigint(20) unsigned NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   `observation` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) NOT NULL,
@@ -122,18 +122,12 @@ CREATE TABLE `quotes` (
   PRIMARY KEY (`id`),
   KEY `quotes_persons_id_index` (`persons_id`),
   CONSTRAINT `quotes_persons_id_foreign` FOREIGN KEY (`persons_id`) REFERENCES `persons` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of quotes
 -- ----------------------------
-INSERT INTO `quotes` VALUES ('1', '3', 'App Delivery', 'gfgffggf', '2020-06-28 16:19:00', 'cvcvcvv', '0', '2020-06-28 15:20:10', '2020-06-28 15:20:10');
-INSERT INTO `quotes` VALUES ('2', '3', 'Charla de Finanzas en el Hogar', 'tytyty', '2020-06-28 16:20:00', 'tytytyty', '0', '2020-06-28 15:20:36', '2020-06-28 15:20:36');
-INSERT INTO `quotes` VALUES ('3', '5', 'App Deliveryd', 'dcdfdfdfd', '2020-06-28 16:40:00', 'dfdfdf', '0', '2020-06-28 15:39:56', '2020-06-28 15:40:46');
-INSERT INTO `quotes` VALUES ('4', '3', 'Seminario de matematicas', 'cvcvv', '2020-06-29 16:56:00', 'vcvvv', '0', '2020-06-28 15:57:13', '2020-06-28 15:57:13');
-INSERT INTO `quotes` VALUES ('5', '4', 'Charla de Finanzas en el Hogar  ccvvcv', 'xcxcvc', '2020-06-30 12:00:00', 'cvcvcv', '0', '2020-06-28 16:02:52', '2020-06-28 16:02:52');
-INSERT INTO `quotes` VALUES ('7', '4', 'Charla de Finanzas en el Hogar', 'vbbv', '2020-06-30 12:00:00', 'vbvbv', '0', '2020-06-28 16:04:57', '2020-06-28 16:04:57');
-INSERT INTO `quotes` VALUES ('8', '4', 'Charla de Finanzas  60000', 'cfdvcvcvcvcv', '2020-06-29 17:42:00', 'erererererer', '0', '2020-06-28 16:42:29', '2020-06-28 16:43:07');
+INSERT INTO `quotes` VALUES ('2', '5', 'CONSEJERIA DE MATRIMONIO', 'CONSEJO PARA MATRIMONIO', '', '2020-06-30 05:09:00', 'SALA DE ZOOM 854-5555-7845', '0', '2020-06-29 14:31:11', '2020-06-30 10:32:20');
 
 -- ----------------------------
 -- Table structure for roles
@@ -145,7 +139,7 @@ CREATE TABLE `roles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of roles
@@ -153,6 +147,7 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` VALUES ('1', 'Administrador', '2018-02-02 17:10:16', '2018-02-02 17:10:16');
 INSERT INTO `roles` VALUES ('2', 'Sistemas', '2018-02-02 17:10:28', '2018-02-02 17:10:28');
 INSERT INTO `roles` VALUES ('3', 'Personal', '2018-02-08 12:08:07', '2018-02-08 12:13:42');
+INSERT INTO `roles` VALUES ('4', 'Recepcionista', '2020-06-29 12:45:47', '2020-06-29 12:45:47');
 
 -- ----------------------------
 -- Table structure for secciones
@@ -166,7 +161,7 @@ CREATE TABLE `secciones` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of secciones
@@ -176,6 +171,8 @@ INSERT INTO `secciones` VALUES ('2', 'Crear Usuario', 'Sub-Sección', '/dash/use
 INSERT INTO `secciones` VALUES ('3', 'Lista de Usuarios Registrados', 'Sub-Sección', '/dash/user/list', '2018-02-02 17:09:31', '2018-02-02 17:09:31');
 INSERT INTO `secciones` VALUES ('4', 'Crear Sección de Acceso', 'Sub-Sección', '/dash/seccion/new', '2018-02-08 14:02:23', '2018-02-08 14:02:23');
 INSERT INTO `secciones` VALUES ('5', 'Lista de Roles Registrados', 'Sub-Sección', '/dash/rol/list', '2018-02-08 14:03:30', '2018-02-08 14:03:30');
+INSERT INTO `secciones` VALUES ('6', 'Crear Citas', 'Sub-Sección', '/dash/quote/new', '2020-06-29 12:51:19', '2020-06-29 12:51:41');
+INSERT INTO `secciones` VALUES ('7', 'Listado de Citas', 'Sub-Sección', '/dash/quote/list', '2020-06-29 12:58:33', '2020-06-29 12:58:33');
 
 -- ----------------------------
 -- Table structure for secciones_rol
@@ -192,17 +189,20 @@ CREATE TABLE `secciones_rol` (
   KEY `secciones_rol_seccion_id_foreign` (`seccion_id`),
   CONSTRAINT `secciones_rol_rol_id_foreign` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`),
   CONSTRAINT `secciones_rol_seccion_id_foreign` FOREIGN KEY (`seccion_id`) REFERENCES `secciones` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of secciones_rol
 -- ----------------------------
-INSERT INTO `secciones_rol` VALUES ('1', '1', '1', '2018-02-02 17:10:16', '2018-02-02 17:10:16');
-INSERT INTO `secciones_rol` VALUES ('2', '1', '2', '2018-02-02 17:10:16', '2018-02-02 17:10:16');
-INSERT INTO `secciones_rol` VALUES ('3', '1', '3', '2018-02-02 17:10:16', '2018-02-02 17:10:16');
 INSERT INTO `secciones_rol` VALUES ('16', '3', '2', '2018-02-08 12:13:42', '2018-02-08 12:13:42');
 INSERT INTO `secciones_rol` VALUES ('17', '3', '3', '2018-02-08 12:13:43', '2018-02-08 12:13:43');
 INSERT INTO `secciones_rol` VALUES ('18', '2', '3', '2018-02-08 12:13:53', '2018-02-08 12:13:53');
+INSERT INTO `secciones_rol` VALUES ('19', '1', '1', '2020-06-29 12:42:19', '2020-06-29 12:42:19');
+INSERT INTO `secciones_rol` VALUES ('20', '1', '2', '2020-06-29 12:42:19', '2020-06-29 12:42:19');
+INSERT INTO `secciones_rol` VALUES ('21', '1', '4', '2020-06-29 12:42:20', '2020-06-29 12:42:20');
+INSERT INTO `secciones_rol` VALUES ('22', '1', '5', '2020-06-29 12:42:20', '2020-06-29 12:42:20');
+INSERT INTO `secciones_rol` VALUES ('25', '4', '7', '2020-06-29 12:59:00', '2020-06-29 12:59:00');
+INSERT INTO `secciones_rol` VALUES ('26', '4', '6', '2020-06-29 12:59:00', '2020-06-29 12:59:00');
 
 -- ----------------------------
 -- Table structure for tipos_documento
@@ -236,12 +236,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'pgi', 'pgi', 'pgi@pgi.com', '$2y$10$UQpTaPRpMfvG8F/3Iue5N.n6XCDx1WmMbtHzVI0.GGhdGE/qN.o.i', '0M0JOXzzUtP2E05VXj55CMllWNqfIaOATHwPrWSdMgG9kybrsPkBNTpTCA7C', '2018-02-02 17:08:18', '2020-06-28 16:46:17');
+INSERT INTO `users` VALUES ('1', 'pgi', 'pgi', 'pgi@pgi.com', '$2y$10$UQpTaPRpMfvG8F/3Iue5N.n6XCDx1WmMbtHzVI0.GGhdGE/qN.o.i', 'BhxwJ95KBHLKhS9SfaodrLW9Qgoj8QtVBmaw1YYmbCtOrEkEqpIzqKS8dwR4', '2018-02-02 17:08:18', '2020-06-28 16:46:17');
+INSERT INTO `users` VALUES ('2', 'Edison Villamar Segura', 'edison.villamar', 'edi.villamar@gmail.com', '$2y$10$bWpzM5aBmSkCJCkdQQDBBekSJOcj0D9xnnCB.DHseWKNgRLW..j/e', '8UHFb3rJtRuhBkv7NmfgQDtZBr6ucIV5zSjxlIUIVdVrWdQInfeIW8LHHiS9', '2020-06-29 12:40:06', '2020-06-29 12:40:06');
+INSERT INTO `users` VALUES ('3', 'Jose Lozada', 'xeferino', 'josegregoriolozadae@gmail.com', '$2y$10$85iS6oeBXbzWd5lzpvMELOhUkLj6jhXQAk4G9gjWzrZs4vXRx80lC', 'PkUMkUfAybptagvBIAwIetNnblptPPyLUxEqDeFjY5Iur9EuG2ifrgavaw5R', '2020-06-29 12:53:03', '2020-06-29 12:53:03');
 
 -- ----------------------------
 -- Table structure for users_rol
@@ -258,8 +260,10 @@ CREATE TABLE `users_rol` (
   KEY `users_rol_rol_id_foreign` (`rol_id`),
   CONSTRAINT `users_rol_rol_id_foreign` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`),
   CONSTRAINT `users_rol_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of users_rol
 -- ----------------------------
+INSERT INTO `users_rol` VALUES ('1', '2', '2', '2020-06-29 12:40:25', '2020-06-29 16:28:18');
+INSERT INTO `users_rol` VALUES ('2', '3', '4', '2020-06-29 12:53:15', '2020-06-29 12:53:15');

@@ -21,6 +21,7 @@ class QuoteController extends Controller
             'persons_id' => $data->persona,
             'title' => $data->title,
             'description' => $data->description,
+            'type' => $data->type,
             'observation' => $data->observation,
             'date' => $data->date,
             'status' => 0,
@@ -71,6 +72,7 @@ class QuoteController extends Controller
             $quote->persons_id = $request->persons_id;
             $quote->title = $request->title;
             $quote->description = $request->description;
+            $quote->type = $request->type;
             $quote->date = $request->date;
             $quote->observation = $request->observation;
             $quote->status = ($request->status == 0) ? 0 : 1;
@@ -159,6 +161,7 @@ class QuoteController extends Controller
                 'persons_id' => $data->persona,
                 'title' => $data->title,
                 'description' => $data->description,
+                'type' => $data->type,
                 'observation' => $data->observation,
                 'date' => $data->date,
                 'status' => 0,
