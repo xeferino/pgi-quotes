@@ -201,6 +201,7 @@
                     if(data!=0){
                         $('#quote-content').show();
                         $('.loading_modal_create').hide();
+                        $("#save-quote")[0].reset();
                         $("#persona").html(function(){
                             var html ='';
                             html +='<option value="">.::Seleccione::.</option>';
