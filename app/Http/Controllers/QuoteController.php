@@ -73,7 +73,7 @@ class QuoteController extends Controller
             $quote->description = $request->description;
             $quote->date = $request->date;
             $quote->observation = $request->observation;
-            $quote->status = ($quote->status == 0) ? 0 : 1;
+            $quote->status = ($request->status == 0) ? 0 : 1;
             $quote->save();
             return json_encode(1);
         } else {
@@ -148,13 +148,13 @@ class QuoteController extends Controller
     {
         $f1 = date('Y-m-d', strtotime($data->date));
         $f2 = date('Y-m-d');
-        if($f1>=$f2){
+        if ($f1 >= $f2) {
             $exists = DB::table('quotes')
-                        ->select('quotes.date')
-                        ->where('quotes.status', '0')
-                        ->where('quotes.date', 'LIKE', '%' . $f1 . '%')
-                        ->count();
-                        
+                ->select('quotes.date')
+                ->where('quotes.status', '0')
+                ->where('quotes.date', 'LIKE', '%' . $f1 . '%')
+                ->count();
+
             $quote = ModelQuote::create([
                 'persons_id' => $data->persona,
                 'title' => $data->title,
@@ -163,17 +163,17 @@ class QuoteController extends Controller
                 'date' => $data->date,
                 'status' => 0,
             ]);
-            
+
             if ($quote) {
-                if($exists==0){
+                if ($exists == 0) {
                     return json_encode(1);
-                }else{                
+                } else {
                     return json_encode(2);
                 }
             } else {
                 return json_encode(0);
             }
-        }else{
+        } else {
             return json_encode(3);
         }
     }

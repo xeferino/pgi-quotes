@@ -42,11 +42,11 @@
                   <tr>
                     <td><b>Estatus</b></td>
                     <td>
-                      <button class="btn btn-success btn-xs" v-if="dataShowModalDataQuote.status!='Cerrada'">
-                          {{ dataShowModalDataQuote.status }}
+                      <button class="btn btn-success btn-xs" v-if="dataShowModalDataQuote.status!='1'">
+                        Asignada
                       </button>
                       <button v-else class="btn btn-danger btn-xs">
-                        {{ dataShowModalDataQuote.status }}
+                        Cerrada
                     </button>
                     </td>
                   </tr>

@@ -200,11 +200,11 @@
 					success: function(data){
 						btnElement.hide();
 						if(data!=0){
-							if(data.quote[0].status==0){
+							/* if(data.quote[0].status==0){
 								data.quote[0].status = "Asignada";
 							}else{
 								data.quote[0].status = "Cerrada";
-							}
+							} */
 							$("#pers").val(data.quote[0].persons_id);
 							appQuoteList.changeValuesOfPropDataQuote(true, data.quote[0].persons_id, data.quote[0].title, data.quote[0].description, data.quote[0].date, data.quote[0].observation, data.quote[0].status, data.quote[0].fullnames, data.quote[0].email, data.quote[0].phone, data.quote[0].created_at, data.quote[0].updated_at);
 						}else{
