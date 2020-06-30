@@ -45,17 +45,15 @@
                       <div class="form-group fc">
                         <select name="type" class="form-control check-key" v-model="dataShowModalDataQuote.type" required autofocus>
                           <option value="Matrimonio">Matrimonio</option>
-                          <option value="Familiar">Familiar</option>
+                          <option value="Emocional">Emocional</option>
+                          <option value="Financiero">Financiero</option>
                         </select>
                       </div>
                     </th>
                     <th>
                        <h4 style="margin: 0px">
-                          <button class="btn btn-success btn-xs" v-if="dataShowModalDataQuote.type!='Matrimonio'">
-                            Familiar
-                          </button>
-                          <button v-else class="btn btn-success btn-xs">
-                            Matrimonio
+                          <button class="btn btn-success btn-xs">
+                            {{ dataShowModalDataQuote.type }}
                           </button>
                       </h4>
                     </th>

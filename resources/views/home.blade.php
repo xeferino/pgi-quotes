@@ -96,7 +96,8 @@
                                             <select name="type" id="tyoe" class="form-control check-key" required autofocus>
                                                 <option value="">.::Seleccione::.</option>
                                                 <option value="Matrimonio">Matrimonio</option>
-                                                <option value="Familiar">Familiar</option>
+                                                <option value="Emocional">Emocional</option>
+                                                <option value="Financiero">Financiero</option>
                                             </select>
                                         </div>
                                     </div>
